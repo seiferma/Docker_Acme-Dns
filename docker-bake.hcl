@@ -1,11 +1,15 @@
+variable "VERSION" {
+  # renovate: datasource=github-tags depName=joohoi/acme-dns
+  default = "v1.0"
+}
+
 target "default" {
-  name = "${regex_replace("app-${version}", "[.#]", "_")}"
-  matrix = {
-    version = ["latest", "v1.0"]
-  }
   platforms = ["linux/amd64", "linux/arm64"]
-  tags = ["quay.io/seiferma/acme-dns:${version}"]
+  tags = [
+    "quay.io/seiferma/acme-dns:${VERSION}",
+    "quay.io/seiferma/acme-dns:latest"
+  ]
   args = {
-    VERSION = "${version}"
+    VERSION = "${VERSION}"
   }
 }
