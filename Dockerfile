@@ -2,14 +2,7 @@ FROM --platform=$BUILDPLATFORM alpine:latest AS downloader
 ARG VERSION=latest
 
 RUN apk add --no-cache curl jq
-RUN if [[ $VERSION == "latest" ]]; then \
-      export API_PART="latest" ; \
-    else \
-      export API_PART="tags/$VERSION" ; \
-    fi && \
-    export API_URL="https://api.github.com/repos/joohoi/acme-dns/releases/$API_PART" && \
-    export TAR_URL=$(curl -s "$API_URL" | jq -r '.tarball_url') && \
-    curl -L -s -o /tmp/acme-dns.tar.gz "$TAR_URL" && \
+RUN curl -L -s -o /tmp/acme-dns.tar.gz "https://github.com/joohoi/acme-dns/archive/refs/tags/$VERSION.tar.gz" && \
     mkdir /tmp/acme-dns && \
     tar -xzf /tmp/acme-dns.tar.gz --strip-components=1 -C /tmp/acme-dns
 

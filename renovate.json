@@ -1,0 +1,9 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:best-practices",
+        "github>seiferma/renovate-selfhosted:preset-docker"
+    ],
+    "dependencyDashboard": false,
+    "pinDigests": false
+}
