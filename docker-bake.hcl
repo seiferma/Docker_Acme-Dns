@@ -1,6 +1,6 @@
 variable "VERSION" {
   # renovate: datasource=github-tags depName=joohoi/acme-dns
-  default = "v1.0"
+  default = "v1.1"
 }
 
 target "default" {
