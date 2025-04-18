@@ -4,5 +4,6 @@
         "config:best-practices",
         "github>seiferma/renovate-selfhosted:preset-docker"
     ],
-    "dependencyDashboard": false
+    "dependencyDashboard": false,
+    "pinDigests": false
 }
