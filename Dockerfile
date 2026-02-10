@@ -9,9 +9,9 @@ RUN curl -L -s -o /tmp/acme-dns.tar.gz "https://github.com/joohoi/acme-dns/archi
 
 
 FROM --platform=$BUILDPLATFORM tonistiigi/xx AS xx
-FROM golang:1.25-alpine AS builder-platform
+FROM golang:1.26-alpine AS builder-platform
 
-FROM --platform=$BUILDPLATFORM golang:1.25-alpine AS builder
+FROM --platform=$BUILDPLATFORM golang:1.26-alpine AS builder
 RUN apk add clang lld
 COPY --from=xx / /
 ARG TARGETPLATFORM
